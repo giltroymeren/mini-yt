@@ -1,5 +1,4 @@
 export interface IYouTubeResultItem {
-  kind: string;
   etag: string;
   id: {
     kind: string;
@@ -11,7 +10,7 @@ export interface IYouTubeResultItem {
     title: string;
     description: string;
     thumbnails: {
-      high: {
+      medium: {
         url: string;
         width: number;
         height: number;

@@ -7,7 +7,7 @@ const VideoItem: React.FC<{ video: IYouTubeResultItem }> = ({ video }) => {
   return (
     <div className="card">
       <a href={`${url}${video.id.videoId}`}><img className="card-img-top"
-        src={video.snippet.thumbnails.high.url}
+        src={video.snippet.thumbnails.medium.url}
         alt={video.snippet.title} />
       </a>
       <div className="card-body">
