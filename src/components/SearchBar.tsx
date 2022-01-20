@@ -27,7 +27,7 @@ const SearchBar: React.FC<ISearchBar> = ({ onSetVideoList }) => {
   }
 
   return (
-    <div className='container mt-5'>
+    <div className='mt-5'>
       <div className="input-group">
         <input type='text'
           placeholder='Enter what you are looking for'

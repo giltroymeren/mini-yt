@@ -2,11 +2,18 @@ import React from 'react';
 import VideoItem from './VideoItem'
 import { IYouTubeResultItem, IYouTubeResults } from '../common/types'
 
-const VideoList: React.FC<{ list: IYouTubeResults }> = ({ list }) => {
+interface IVideoList {
+  list: IYouTubeResults,
+  onSetSelectedVideo: (video: IYouTubeResultItem) => void;
+}
+
+const VideoList: React.FC<IVideoList> = ({ list, onSetSelectedVideo }) => {
   return (
-    <div className='container mt-3'>
+    <div className='mt-3'>
       {list.data.items.map((item: IYouTubeResultItem) => (
-        <VideoItem key={item.etag} video={item} />)
+        <VideoItem key={item.etag}
+          video={item}
+          onSetSelectedVideo={onSetSelectedVideo} />)
       )}
     </div>
   );

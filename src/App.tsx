@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import NavBar from './components/NavBar'
 import SearchBar from './components/SearchBar'
-import { IYouTubeResults } from './common/types'
+import VideoDetail from './components/VideoDetail'
+import { IYouTubeResultItem, IYouTubeResults } from './common/types'
 import VideoList from './components/VideoList';
 
 function App() {
@@ -11,13 +12,23 @@ function App() {
     }
   })
 
+  const [selectedVideo, setSelectedVideo] = useState<IYouTubeResultItem>()
+
   const onSetVideoList = (list: IYouTubeResults): void => setVideoList(list)
+  const onSetSelectedVideo = (video: IYouTubeResultItem): void => {
+    console.log(video.id.videoId)
+    setSelectedVideo(video)
+  }
 
   return (
     <>
       <NavBar />
-      <SearchBar onSetVideoList={onSetVideoList} />
-      <VideoList list={videoList} />
+
+      <div className='container'>
+        <SearchBar onSetVideoList={onSetVideoList} />
+        {selectedVideo && <VideoDetail video={selectedVideo} />}
+        <VideoList list={videoList} onSetSelectedVideo={onSetSelectedVideo} />
+      </div>
     </>
   );
 }
