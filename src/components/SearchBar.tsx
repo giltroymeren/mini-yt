@@ -3,13 +3,12 @@ import VideoList from './VideoList'
 import youtube from '../common/youtube'
 import { IYouTubeResults } from '../common/types'
 
-const SearchBar = () => {
+interface ISearchBar {
+  onSetVideoList: (list: IYouTubeResults) => void;
+}
+
+const SearchBar: React.FC<ISearchBar> = ({ onSetVideoList }) => {
   const [term, setTerm] = useState('')
-  const [results, setResults] = useState<IYouTubeResults>({
-    data: {
-      items: []
-    }
-  })
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.target.value)
@@ -24,8 +23,7 @@ const SearchBar = () => {
       }
     })
 
-    console.log(result)
-    setResults(result)
+    onSetVideoList(result)
   }
 
   return (
@@ -41,8 +39,6 @@ const SearchBar = () => {
           type="submit"
           onClick={onClick}>Search</button>
       </div>
-
-      <VideoList list={results.data.items} />
     </div>
   );
 };
