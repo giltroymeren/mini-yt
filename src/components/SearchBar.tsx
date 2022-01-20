@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import VideoList from './VideoList'
 import youtube from '../common/youtube'
 import { IYouTubeResults } from '../common/types'
 

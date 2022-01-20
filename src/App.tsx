@@ -16,7 +16,6 @@ function App() {
 
   const onSetVideoList = (list: IYouTubeResults): void => setVideoList(list)
   const onSetSelectedVideo = (video: IYouTubeResultItem): void => {
-    console.log(video.id.videoId)
     setSelectedVideo(video)
   }
 
@@ -34,7 +33,7 @@ function App() {
             </div>
           )}
 
-          <div className='col'>
+          <div className={`col ${selectedVideo && "col-sm-3"}`}>
             <VideoList list={videoList} onSetSelectedVideo={onSetSelectedVideo} />
           </div>
         </div>

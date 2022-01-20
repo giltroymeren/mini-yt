@@ -11,11 +11,17 @@ const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
       year: 'numeric', month: 'long', day: 'numeric'
     })
 
+  const videoSource = `https://www.youtube.com/embed/${video.id.videoId}`
+
   return (
     <div className="card mt-3">
-      <img className="card-img-top"
-        src={video.snippet.thumbnails.medium.url}
-        alt={video.snippet.title} />
+      <iframe src={videoSource}
+      style={{
+        minHeight: '240px',
+        height: '480px',
+        maxHeight: '480px',
+      }}
+        title={video.snippet.title} />
 
       <div className="card-body">
         <h5 className="card-title">{video.snippet.title}</h5>
