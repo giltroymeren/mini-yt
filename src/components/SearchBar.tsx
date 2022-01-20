@@ -1,33 +1,14 @@
 import React, { useState } from 'react';
+import VideoList from './VideoList'
 import youtube from '../common/youtube'
-
-interface IYouTubeResultItem {
-  kind: string;
-  etag: string;
-  id: {
-    kind: string;
-    videoId: string;
-  }
-  snippet: {
-    publishedAt: string;
-    channelId: string;
-    title: string;
-    description: string;
-    thumbnails: object;
-    channelTitle: string;
-    liveBroadcastContent: string;
-    publishTime: string;
-  }
-}
-
-interface IYouTubeResults {
-  items: IYouTubeResultItem[];
-}
+import { IYouTubeResults } from '../common/types'
 
 const SearchBar = () => {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState<IYouTubeResults>({
-    items: []
+    data: {
+      items: []
+    }
   })
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +24,8 @@ const SearchBar = () => {
       }
     })
 
-    setResults(result)
     console.log(result)
+    setResults(result)
   }
 
   return (
@@ -60,6 +41,8 @@ const SearchBar = () => {
           type="submit"
           onClick={onClick}>Search</button>
       </div>
+
+      <VideoList list={results.data.items} />
     </div>
   );
 };
