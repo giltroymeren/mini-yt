@@ -1,12 +1,11 @@
 import React from 'react';
+import VideoItem from './VideoItem'
 import { IYouTubeResultItem } from '../common/types'
 
-const VideoList: React.FC<{list: IYouTubeResultItem[]}> = ({ list }) => {
-  const videos = list.map(item => <li key={item.etag}>{item.etag}</li>)
-
+const VideoList: React.FC<{ list: IYouTubeResultItem[] }> = ({ list }) => {
   return (
     <>
-    {videos}
+      {list.map(item => <VideoItem key={item.etag} video={item} />)}
     </>
   );
 };

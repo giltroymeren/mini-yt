@@ -10,7 +10,13 @@ export interface IYouTubeResultItem {
     channelId: string;
     title: string;
     description: string;
-    thumbnails: object;
+    thumbnails: {
+      high: {
+        url: string;
+        width: number;
+        height: number;
+      }
+    }
     channelTitle: string;
     liveBroadcastContent: string;
     publishTime: string;
