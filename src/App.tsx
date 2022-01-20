@@ -14,7 +14,10 @@ function App() {
 
   const [selectedVideo, setSelectedVideo] = useState<IYouTubeResultItem>()
 
-  const onSetVideoList = (list: IYouTubeResults): void => setVideoList(list)
+  const onSetVideoList = (list: IYouTubeResults): void => {
+    setVideoList(list)
+    setSelectedVideo(list.data.items[0])
+  }
   const onSetSelectedVideo = (video: IYouTubeResultItem): void => {
     setSelectedVideo(video)
   }
