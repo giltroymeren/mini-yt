@@ -1,15 +1,50 @@
 import React, { useState } from 'react';
+import youtube from '../common/youtube'
+
+interface IYouTubeResultItem {
+  kind: string;
+  etag: string;
+  id: {
+    kind: string;
+    videoId: string;
+  }
+  snippet: {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: object;
+    channelTitle: string;
+    liveBroadcastContent: string;
+    publishTime: string;
+  }
+}
+
+interface IYouTubeResults {
+  items: IYouTubeResultItem[];
+}
 
 const SearchBar = () => {
   const [term, setTerm] = useState('')
+  const [results, setResults] = useState<IYouTubeResults>({
+    items: []
+  })
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.target.value)
   }
 
-  const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
-    console.log(term)
+
+    const result: IYouTubeResults = await youtube.get('/search', {
+      params: {
+        q: term
+      }
+    })
+
+    setResults(result)
+    console.log(result)
   }
 
   return (
