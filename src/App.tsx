@@ -31,12 +31,12 @@ function App() {
 
         <div className='row'>
           {selectedVideo && (
-            <div className='col col-sm-9'>
+            <div className='col col-md-9'>
               <VideoDetail video={selectedVideo} />
             </div>
           )}
 
-          <div className={`col ${selectedVideo && "col-sm-3"}`}>
+          <div className={`col ${selectedVideo && "col-md-3"}`}>
             <VideoList list={videoList} onSetSelectedVideo={onSetSelectedVideo} />
           </div>
         </div>

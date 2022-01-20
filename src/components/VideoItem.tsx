@@ -1,5 +1,6 @@
 import React from 'react';
 import { IYouTubeResultItem } from '../common/types';
+import { htmlUnescape } from 'escape-goat'
 
 interface IVideoItem {
   video: IYouTubeResultItem,
@@ -23,7 +24,7 @@ const VideoItem: React.FC<IVideoItem> = ({ video, onSetSelectedVideo }) => {
         alt={video.snippet.title} />
 
       <div className="card-body">
-        <small className="card-title">{video.snippet.title}</small>
+        <small className="card-title">{htmlUnescape(video.snippet.title)}</small>
       </div>
     </div>
   )

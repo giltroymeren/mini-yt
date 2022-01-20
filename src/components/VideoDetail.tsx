@@ -1,5 +1,6 @@
 import React from 'react';
 import { IYouTubeResultItem } from '../common/types';
+import { htmlUnescape } from 'escape-goat'
 
 interface IVideoDetail {
   video: IYouTubeResultItem;
@@ -16,15 +17,15 @@ const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
   return (
     <div className="card mt-3">
       <iframe src={videoSource}
-      style={{
-        minHeight: '240px',
-        height: '480px',
-        maxHeight: '480px',
-      }}
+        style={{
+          minHeight: '240px',
+          height: '480px',
+          maxHeight: '480px',
+        }}
         title={video.snippet.title} />
 
       <div className="card-body">
-        <h5 className="card-title">{video.snippet.title}</h5>
+        <h5 className="card-title">{htmlUnescape(video.snippet.title)}</h5>
         <p className="card-text">{video.snippet.description}</p>
         <p className="card-text">
           <small className="text-muted">
