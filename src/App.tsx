@@ -26,8 +26,18 @@ function App() {
 
       <div className='container'>
         <SearchBar onSetVideoList={onSetVideoList} />
-        {selectedVideo && <VideoDetail video={selectedVideo} />}
-        <VideoList list={videoList} onSetSelectedVideo={onSetSelectedVideo} />
+
+        <div className='row'>
+          {selectedVideo && (
+            <div className='col col-sm-9'>
+              <VideoDetail video={selectedVideo} />
+            </div>
+          )}
+
+          <div className='col'>
+            <VideoList list={videoList} onSetSelectedVideo={onSetSelectedVideo} />
+          </div>
+        </div>
       </div>
     </>
   );

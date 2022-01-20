@@ -23,7 +23,7 @@ const VideoItem: React.FC<IVideoItem> = ({ video, onSetSelectedVideo }) => {
         alt={video.snippet.title} />
 
       <div className="card-body">
-        <h5 className="card-title">{video.snippet.title}</h5>
+        <small className="card-title">{video.snippet.title}</small>
       </div>
     </div>
   )
