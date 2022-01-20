@@ -8,17 +8,23 @@ const SearchBar = () => {
   }
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault()
     console.log(term)
   }
 
   return (
-    <div>
-      <input type='text'
-        placeholder='Enter what you are looking for'
-        name='term'
-        value={term}
-        onChange={onChange} />
-      <button onClick={onClick}>Search</button>
+    <div className='container mt-5'>
+      <div className="input-group">
+        <input type='text'
+          placeholder='Enter what you are looking for'
+          name='term'
+          className='form-control form-control-lg'
+          value={term}
+          onChange={onChange} />
+        <button className="btn btn-primary form-control-lg"
+          type="submit"
+          onClick={onClick}>Search</button>
+      </div>
     </div>
   );
 };

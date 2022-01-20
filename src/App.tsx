@@ -1,11 +1,12 @@
+import NavBar from './components/NavBar'
 import SearchBar from './components/SearchBar'
 
 function App() {
   return (
-    <div>
-      <h1>Mini YT</h1>
+    <>
+      <NavBar />
       <SearchBar />
-    </div>
+    </>
   );
 }
 
