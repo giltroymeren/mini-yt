@@ -1,23 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar'
 import SearchBar from './components/SearchBar'
 import VideoDetail from './components/VideoDetail'
-import { IYouTubeResultItem, IYouTubeResults } from './common/types'
+import { IYouTubeResultItem } from './common/types'
 import VideoList from './components/VideoList';
+import useVideos from './hooks/useVideos'
 
 function App() {
-  const [videoList, setVideoList] = useState<IYouTubeResults>({
-    data: {
-      items: []
-    }
-  })
-
   const [selectedVideo, setSelectedVideo] = useState<IYouTubeResultItem>()
+  const { list, onSearch } = useVideos('mochi')
 
-  const onSetVideoList = (list: IYouTubeResults): void => {
-    setVideoList(list)
+  useEffect(() => {
     setSelectedVideo(list.data.items[0])
-  }
+  }, [list])
+
   const onSetSelectedVideo = (video: IYouTubeResultItem): void => {
     setSelectedVideo(video)
   }
@@ -27,7 +23,7 @@ function App() {
       <NavBar />
 
       <div className='container'>
-        <SearchBar onSetVideoList={onSetVideoList} />
+        <SearchBar onSearch={onSearch} />
 
         <div className='row'>
           {selectedVideo && (
@@ -37,7 +33,7 @@ function App() {
           )}
 
           <div className={`col ${selectedVideo && "col-md-3"}`}>
-            <VideoList list={videoList} onSetSelectedVideo={onSetSelectedVideo} />
+            <VideoList list={list} onSetSelectedVideo={onSetSelectedVideo} />
           </div>
         </div>
       </div>

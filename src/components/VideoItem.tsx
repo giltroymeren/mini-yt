@@ -8,8 +8,6 @@ interface IVideoItem {
 }
 
 const VideoItem: React.FC<IVideoItem> = ({ video, onSetSelectedVideo }) => {
-  const url = 'https://www.youtube.com/watch?v='
-
   const onClick =
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
       onSetSelectedVideo(video)

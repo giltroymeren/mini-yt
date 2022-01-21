@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
-import youtube from '../common/youtube'
 import { IYouTubeResults } from '../common/types'
 
 interface ISearchBar {
-  onSetVideoList: (list: IYouTubeResults) => void;
+  onSearch: (term: string) => Promise<IYouTubeResults>;
 }
 
-const SearchBar: React.FC<ISearchBar> = ({ onSetVideoList }) => {
+const SearchBar: React.FC<ISearchBar> = ({
+  onSearch
+}) => {
   const [term, setTerm] = useState('')
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.target.value)
   }
 
-  const onClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault()
-
-    const result: IYouTubeResults = await youtube.get('/search', {
-      params: {
-        q: term
-      }
-    })
-
-    onSetVideoList(result)
-  }
+  const onClick =
+    async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      event.preventDefault()
+      onSearch(term)
+    }
 
   return (
     <div className='mt-5'>
