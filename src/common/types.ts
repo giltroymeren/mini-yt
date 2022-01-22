@@ -27,3 +27,8 @@ export interface IYouTubeResults {
     items: IYouTubeResultItem[];
   }
 }
+
+export interface IRootState {
+  videos: IYouTubeResultItem[]
+  selectedVideo: IYouTubeResultItem
+}

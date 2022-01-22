@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { IYouTubeResults } from '../common/types'
+import { connect } from 'react-redux';
 
-interface ISearchBar {
-  onSearch: (term: string) => Promise<IYouTubeResults>;
+import { IRootState, IYouTubeResultItem, IYouTubeResults } from '../common/types'
+import { getVideos } from '../actions'
+
+interface IComponentProps {
+  videos?: IYouTubeResultItem[]
+  getVideos: (term: string) => Promise<void>
 }
 
-const SearchBar: React.FC<ISearchBar> = ({
-  onSearch
-}) => {
+const SearchBar = ({
+  videos,
+  getVideos
+}: IComponentProps) => {
   const [term, setTerm] = useState('')
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +22,8 @@ const SearchBar: React.FC<ISearchBar> = ({
   const onClick =
     async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
-      onSearch(term)
+      getVideos(term)
+      console.log(videos)
     }
 
   return (
@@ -37,4 +43,13 @@ const SearchBar: React.FC<ISearchBar> = ({
   );
 };
 
-export default SearchBar;
+const mapStateToProps = (state: IRootState) => {
+  return {
+    video: state.videos
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { getVideos }
+)(SearchBar)

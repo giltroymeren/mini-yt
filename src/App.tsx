@@ -23,7 +23,7 @@ function App() {
       <NavBar />
 
       <div className='container'>
-        <SearchBar onSearch={onSearch} />
+        <SearchBar />
 
         <div className='row'>
           {selectedVideo && (
