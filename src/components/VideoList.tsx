@@ -20,7 +20,7 @@ const VideoList: React.FC<IVideoList> = ({
         </div>
       )}
 
-      {videos.length && videos.map((item: IVideo) => (
+      {(videos.length > 0) && videos.map((item: IVideo) => (
         <VideoItem key={item.etag}
           video={item} />)
       )}
@@ -31,7 +31,7 @@ const VideoList: React.FC<IVideoList> = ({
 const mapStateToProps = (state: TRootState) => {
   console.log(state)
   return {
-    videos: state.videos
+    videos: state.videos.list
   }
 }
 

@@ -4,5 +4,5 @@ import { rootReducer } from '../reducers'
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 
-export type TRootState = ReturnType<typeof store.getState>
+export type TRootState = ReturnType<typeof rootReducer>
 export type TAppDispatch = typeof store.dispatch

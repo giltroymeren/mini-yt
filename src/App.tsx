@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { TRootState } from './store';
 
 interface IAppProps {
-  selectedVideo: IVideo
+  selectedVideo: IVideo | null
 }
 
 const App: React.FC<IAppProps> = ({ selectedVideo }) => {
@@ -37,7 +37,7 @@ const App: React.FC<IAppProps> = ({ selectedVideo }) => {
 
 const mapStateToProps = (state: TRootState) => {
   return {
-    selectedVideo: state.selectedVideo
+    selectedVideo: state.videos.selected
   }
 }
 
