@@ -1,7 +1,6 @@
-import { ThunkDispatch } from 'redux-thunk'
-import { AnyAction } from 'redux'
 import youtube from '../api/youtube'
 import { EActionTypes, IVideo } from '../common/types'
+import { TAppDispatch } from '../store'
 
 interface IYouTubeResults {
   data: {
@@ -9,9 +8,8 @@ interface IYouTubeResults {
   }
 }
 
-
 export const getVideos = (term: string) =>
-  async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+  async (dispatch: TAppDispatch): Promise<void> => {
     const response: IYouTubeResults = await youtube.get('/search', {
       params: {
         q: term
@@ -23,3 +21,10 @@ export const getVideos = (term: string) =>
       payload: response.data.items
     })
   }
+
+export const selectVideo = (video: IVideo) => {
+  return {
+    type: EActionTypes.selectVideo,
+    payload: video
+  }
+}

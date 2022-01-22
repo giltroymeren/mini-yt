@@ -1,17 +1,21 @@
 import React from 'react';
-import { IVideo } from '../common/types';
+import { EActionTypes, IVideo } from '../common/types';
 import { htmlUnescape } from 'escape-goat'
+import { connect } from 'react-redux';
+import { selectVideo } from '../actions';
 
 interface IVideoItem {
-  video: IVideo,
-  onSetSelectedVideo: (video: IVideo) => void;
+  video: IVideo
+  selectVideo: (video: IVideo) => { type: EActionTypes, payload: IVideo }
 }
 
-const VideoItem: React.FC<IVideoItem> = ({ video, onSetSelectedVideo }) => {
-  const onClick =
-    (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-      onSetSelectedVideo(video)
-    }
+const VideoItem: React.FC<IVideoItem> = ({
+  video,
+  selectVideo
+}) => {
+  const onClick = () => {
+    selectVideo(video)
+  }
 
   return (
     <div className="card bg-light mt-2"
@@ -28,4 +32,4 @@ const VideoItem: React.FC<IVideoItem> = ({ video, onSetSelectedVideo }) => {
   )
 };
 
-export default VideoItem;
+export default connect(null, { selectVideo })(VideoItem)

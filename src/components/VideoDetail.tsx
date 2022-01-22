@@ -3,7 +3,7 @@ import { IVideo } from '../common/types';
 import { htmlUnescape } from 'escape-goat'
 
 interface IVideoDetail {
-  video: IVideo;
+  video: IVideo
 }
 
 const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
@@ -37,4 +37,4 @@ const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
   );
 };
 
-export default VideoDetail;
+export default VideoDetail

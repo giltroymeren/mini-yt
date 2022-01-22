@@ -5,13 +5,19 @@ interface IGetVideosActionType {
   payload: IVideo[]
 }
 
+interface ISelectVideoActionType {
+  type: EActionTypes.selectVideo
+  payload: IVideo
+}
+
 export default (
-  state = [],
-  action: IGetVideosActionType
+  state = { videos: [] },
+  action: IGetVideosActionType | ISelectVideoActionType
 ) => {
   switch (action.type) {
     case EActionTypes.getVideos:
       return action.payload
+
     default:
       return state
   }

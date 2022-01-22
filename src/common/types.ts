@@ -23,5 +23,6 @@ export interface IVideo {
 }
 
 export enum EActionTypes {
-  'getVideos'
+  'getVideos',
+  'selectVideo'
 }

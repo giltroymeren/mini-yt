@@ -4,14 +4,14 @@ import SearchBar from './components/SearchBar'
 import VideoDetail from './components/VideoDetail'
 import { IVideo } from './common/types'
 import VideoList from './components/VideoList';
+import { connect } from 'react-redux';
+import { TRootState } from './store';
 
-function App() {
-  const [selectedVideo, setSelectedVideo] = useState<IVideo>()
+interface IAppProps {
+  selectedVideo: IVideo
+}
 
-  const onSetSelectedVideo = (video: IVideo): void => {
-    setSelectedVideo(video)
-  }
-
+const App: React.FC<IAppProps> = ({ selectedVideo }) => {
   return (
     <>
       <NavBar />
@@ -27,7 +27,7 @@ function App() {
           )}
 
           <div className={`col ${selectedVideo && "col-md-3"}`}>
-            <VideoList onSetSelectedVideo={onSetSelectedVideo} />
+            <VideoList />
           </div>
         </div>
       </div>
@@ -35,4 +35,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state: TRootState) => {
+  return {
+    selectedVideo: state.selectedVideo
+  }
+}
+
+export default connect(mapStateToProps, {})(App)

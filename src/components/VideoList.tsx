@@ -3,29 +3,27 @@ import { connect } from 'react-redux';
 
 import VideoItem from './VideoItem'
 import { IVideo } from '../common/types'
-import { TRootState } from '../store'
+import { TRootState } from '../store';
 
 interface IVideoList {
   videos: IVideo[]
-  onSetSelectedVideo: (video: IVideo) => void
 }
 
 const VideoList: React.FC<IVideoList> = ({
-  videos,
-  onSetSelectedVideo,
+  videos
 }) => {
   return (
     <div className='mt-3'>
-      {videos.map((item: IVideo) => (
+      {videos.length && videos.map((item: IVideo) => (
         <VideoItem key={item.etag}
-          video={item}
-          onSetSelectedVideo={onSetSelectedVideo} />)
+          video={item} />)
       )}
     </div>
   );
 };
 
 const mapStateToProps = (state: TRootState) => {
+  console.log(state)
   return {
     videos: state.videos
   }
