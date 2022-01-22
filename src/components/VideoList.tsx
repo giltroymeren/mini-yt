@@ -1,7 +1,9 @@
 import React from 'react';
-import VideoItem from './VideoItem'
-import { IRootState, IYouTubeResultItem } from '../common/types'
 import { connect } from 'react-redux';
+
+import VideoItem from './VideoItem'
+import { IYouTubeResultItem } from '../common/types'
+import { TRootState } from '../store'
 
 interface IVideoList {
   videos: IYouTubeResultItem[]
@@ -23,7 +25,7 @@ const VideoList: React.FC<IVideoList> = ({
   );
 };
 
-const mapStateToProps = (state: IRootState) => {
+const mapStateToProps = (state: TRootState) => {
   return {
     videos: state.videos
   }
