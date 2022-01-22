@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { getVideos } from '../actions'
+import { clearVideos, getVideos } from '../actions'
 
 interface IComponentProps {
+  clearVideos: () => {}
   getVideos: (term: string) => Promise<void>
 }
 
 const SearchBar = ({
+  clearVideos,
   getVideos
 }: IComponentProps) => {
   const [term, setTerm] = useState('')
@@ -19,6 +21,7 @@ const SearchBar = ({
   const onClick =
     async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
+      clearVideos()
       getVideos(term)
     }
 
@@ -39,4 +42,4 @@ const SearchBar = ({
   );
 };
 
-export default connect(null, { getVideos })(SearchBar)
+export default connect(null, { clearVideos, getVideos })(SearchBar)

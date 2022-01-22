@@ -8,6 +8,12 @@ interface IYouTubeResults {
   }
 }
 
+export const clearVideos = () => {
+  return {
+    type: EActionTypes.clearVideos
+  }
+}
+
 export const getVideos = (term: string) =>
   async (dispatch: TAppDispatch): Promise<void> => {
     const response: IYouTubeResults = await youtube.get('/search', {
