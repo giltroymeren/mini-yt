@@ -33,7 +33,7 @@ function App() {
           )}
 
           <div className={`col ${selectedVideo && "col-md-3"}`}>
-            <VideoList list={list} onSetSelectedVideo={onSetSelectedVideo} />
+            <VideoList onSetSelectedVideo={onSetSelectedVideo} />
           </div>
         </div>
       </div>

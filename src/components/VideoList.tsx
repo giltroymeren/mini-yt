@@ -1,20 +1,20 @@
 import React from 'react';
 import VideoItem from './VideoItem'
-import { IYouTubeResultItem, IYouTubeResults } from '../common/types'
+import { IRootState, IYouTubeResultItem } from '../common/types'
+import { connect } from 'react-redux';
 
 interface IVideoList {
-  list: IYouTubeResults
+  videos: IYouTubeResultItem[]
   onSetSelectedVideo: (video: IYouTubeResultItem) => void
 }
 
-const VideoList: React.FC<IVideoList> = (
-  {
-    list,
-    onSetSelectedVideo,
-  }) => {
+const VideoList: React.FC<IVideoList> = ({
+  videos,
+  onSetSelectedVideo,
+}) => {
   return (
     <div className='mt-3'>
-      {list.data.items.map((item: IYouTubeResultItem) => (
+      {videos.map((item: IYouTubeResultItem) => (
         <VideoItem key={item.etag}
           video={item}
           onSetSelectedVideo={onSetSelectedVideo} />)
@@ -23,4 +23,12 @@ const VideoList: React.FC<IVideoList> = (
   );
 };
 
-export default VideoList;
+const mapStateToProps = (state: IRootState) => {
+  return {
+    videos: state.videos
+  }
+}
+
+export default connect(
+  mapStateToProps, {}
+)(VideoList)
