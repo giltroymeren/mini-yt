@@ -29,7 +29,6 @@ const VideoList: React.FC<IVideoList> = ({
 };
 
 const mapStateToProps = (state: TRootState) => {
-  console.log(state)
   return {
     videos: state.videos.list
   }

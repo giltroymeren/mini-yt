@@ -1,12 +1,16 @@
 import React from 'react';
-import { IVideo } from '../common/types';
+import { EActionTypes, IVideo } from '../common/types';
 import { htmlUnescape } from 'escape-goat'
+import { connect } from 'react-redux';
+import { clearSelectedVideo } from '../actions';
 
-interface IVideoDetail {
+interface IVideoDetailProps {
   video: IVideo
+  clearSelectedVideo: () => { type: EActionTypes }
 }
 
-const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
+const VideoDetail: React.FC<IVideoDetailProps> = (
+  { video, clearSelectedVideo }) => {
   const getFormattedDate = (date: string): string =>
     new Date(date).toLocaleDateString(undefined, {
       year: 'numeric', month: 'long', day: 'numeric'
@@ -14,8 +18,16 @@ const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
 
   const videoSource = `https://www.youtube.com/embed/${video.id.videoId}`
 
+  const closeVideo = () => {
+    clearSelectedVideo()
+  }
+
   return (
     <div className="card mt-3">
+      <button type="button"
+        className="btn btn-secondary"
+        onClick={closeVideo}>&times;</button>
+
       <iframe src={videoSource}
         style={{
           minHeight: '240px',
@@ -37,4 +49,4 @@ const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {
   );
 };
 
-export default VideoDetail
+export default connect(null, { clearSelectedVideo })(VideoDetail)

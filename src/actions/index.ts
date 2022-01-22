@@ -14,6 +14,12 @@ export const clearVideos = () => {
   }
 }
 
+export const clearSelectedVideo = () => {
+  return {
+    type: EActionTypes.clearSelectedVideo
+  }
+}
+
 export const getVideos = (term: string) =>
   async (dispatch: TAppDispatch): Promise<void> => {
     const response: IYouTubeResults = await youtube.get('/search', {
@@ -26,7 +32,7 @@ export const getVideos = (term: string) =>
       type: EActionTypes.getVideos,
       payload: response.data.items
     })
-  }
+  }  
 
 export const selectVideo = (video: IVideo) => {
   return {

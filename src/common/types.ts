@@ -25,5 +25,6 @@ export interface IVideo {
 export enum EActionTypes {
   'clearVideos',
   'getVideos',
-  'selectVideo'
+  'selectVideo',
+  'clearSelectedVideo'
 }

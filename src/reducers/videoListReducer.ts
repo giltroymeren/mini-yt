@@ -4,6 +4,10 @@ interface IClearVideosActionType {
   type: EActionTypes.clearVideos
 }
 
+interface IClearSelectedVideoActionType {
+  type: EActionTypes.clearSelectedVideo
+}
+
 interface IGetVideosActionType {
   type: EActionTypes.getVideos
   payload: IVideo[]
@@ -21,13 +25,22 @@ interface IState {
 
 export default (
   state: IState = { list: [], selected: null },
-  action: IClearVideosActionType | IGetVideosActionType | ISelectVideoActionType
+  action: IClearVideosActionType
+    | IClearSelectedVideoActionType
+    | IGetVideosActionType
+    | ISelectVideoActionType
 ) => {
   switch (action.type) {
     case EActionTypes.clearVideos:
       return {
         ...state,
         list: []
+      }
+
+    case EActionTypes.clearSelectedVideo:
+      return {
+        ...state,
+        selected: null
       }
 
     case EActionTypes.getVideos:
