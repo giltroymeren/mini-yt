@@ -14,6 +14,12 @@ const VideoList: React.FC<IVideoList> = ({
 }) => {
   return (
     <div className='mt-3'>
+      {!videos.length && (
+        <div className="alert alert-secondary" role="alert">
+          No videos available. Try searching for some!
+        </div>
+      )}
+
       {videos.length && videos.map((item: IVideo) => (
         <VideoItem key={item.etag}
           video={item} />)
