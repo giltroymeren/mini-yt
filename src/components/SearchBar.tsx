@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { IRootState, IYouTubeResultItem, IYouTubeResults } from '../common/types'
 import { getVideos } from '../actions'
 
 interface IComponentProps {
-  videos?: IYouTubeResultItem[]
   getVideos: (term: string) => Promise<void>
 }
 
 const SearchBar = ({
-  videos,
   getVideos
 }: IComponentProps) => {
   const [term, setTerm] = useState('')
@@ -23,7 +20,6 @@ const SearchBar = ({
     async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
       getVideos(term)
-      console.log(videos)
     }
 
   return (
@@ -43,13 +39,4 @@ const SearchBar = ({
   );
 };
 
-const mapStateToProps = (state: IRootState) => {
-  return {
-    video: state.videos
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  { getVideos }
-)(SearchBar)
+export default connect(null, { getVideos })(SearchBar)

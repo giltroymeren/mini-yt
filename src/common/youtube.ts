@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_YOUTUBE = 'AIzaSyDIc3zWNca_Mk1w-YOmWLsOvFLrSOCZpc8'
+const API_YOUTUBE = 'AIzaSyDRIxJ_qwMPRglrUeo4_Q-zohtnuSzxYD4'
 
 export default axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',
