@@ -1,4 +1,4 @@
-export interface IYouTubeResultItem {
+export interface IVideo {
   etag: string;
   id: {
     kind: string;
@@ -22,8 +22,6 @@ export interface IYouTubeResultItem {
   }
 }
 
-export interface IYouTubeResults {
-  data: {
-    items: IYouTubeResultItem[];
-  }
+export enum EActionTypes {
+  'getVideos'
 }

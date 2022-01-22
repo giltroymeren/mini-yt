@@ -1,9 +1,8 @@
-import { EActionTypes } from "../actions";
-import { IYouTubeResultItem } from "../common/types";
+import { EActionTypes, IVideo } from "../common/types";
 
 interface IGetVideosActionType {
   type: EActionTypes.getVideos
-  payload: IYouTubeResultItem[]
+  payload: IVideo[]
 }
 
 export default (

@@ -1,9 +1,9 @@
 import React from 'react';
-import { IYouTubeResultItem } from '../common/types';
+import { IVideo } from '../common/types';
 import { htmlUnescape } from 'escape-goat'
 
 interface IVideoDetail {
-  video: IYouTubeResultItem;
+  video: IVideo;
 }
 
 const VideoDetail: React.FC<IVideoDetail> = ({ video }) => {

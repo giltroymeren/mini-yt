@@ -1,10 +1,10 @@
 import React from 'react';
-import { IYouTubeResultItem } from '../common/types';
+import { IVideo } from '../common/types';
 import { htmlUnescape } from 'escape-goat'
 
 interface IVideoItem {
-  video: IYouTubeResultItem,
-  onSetSelectedVideo: (video: IYouTubeResultItem) => void;
+  video: IVideo,
+  onSetSelectedVideo: (video: IVideo) => void;
 }
 
 const VideoItem: React.FC<IVideoItem> = ({ video, onSetSelectedVideo }) => {

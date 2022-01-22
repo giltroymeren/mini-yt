@@ -1,11 +1,14 @@
 import { ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux'
 import youtube from '../api/youtube'
-import { IYouTubeResults } from '../common/types'
+import { EActionTypes, IVideo } from '../common/types'
 
-export enum EActionTypes {
-  'getVideos'
+interface IYouTubeResults {
+  data: {
+    items: IVideo[];
+  }
 }
+
 
 export const getVideos = (term: string) =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {

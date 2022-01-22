@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import VideoItem from './VideoItem'
-import { IYouTubeResultItem } from '../common/types'
+import { IVideo } from '../common/types'
 import { TRootState } from '../store'
 
 interface IVideoList {
-  videos: IYouTubeResultItem[]
-  onSetSelectedVideo: (video: IYouTubeResultItem) => void
+  videos: IVideo[]
+  onSetSelectedVideo: (video: IVideo) => void
 }
 
 const VideoList: React.FC<IVideoList> = ({
@@ -16,7 +16,7 @@ const VideoList: React.FC<IVideoList> = ({
 }) => {
   return (
     <div className='mt-3'>
-      {videos.map((item: IYouTubeResultItem) => (
+      {videos.map((item: IVideo) => (
         <VideoItem key={item.etag}
           video={item}
           onSetSelectedVideo={onSetSelectedVideo} />)

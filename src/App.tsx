@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar'
 import SearchBar from './components/SearchBar'
 import VideoDetail from './components/VideoDetail'
-import { IYouTubeResultItem } from './common/types'
+import { IVideo } from './common/types'
 import VideoList from './components/VideoList';
 
 function App() {
-  const [selectedVideo, setSelectedVideo] = useState<IYouTubeResultItem>()
+  const [selectedVideo, setSelectedVideo] = useState<IVideo>()
 
-  const onSetSelectedVideo = (video: IYouTubeResultItem): void => {
+  const onSetSelectedVideo = (video: IVideo): void => {
     setSelectedVideo(video)
   }
 
