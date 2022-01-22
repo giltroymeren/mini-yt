@@ -1,6 +1,6 @@
 import { ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux'
-import youtube from '../common/youtube'
+import youtube from '../api/youtube'
 import { IYouTubeResults } from '../common/types'
 
 export enum EActionTypes {

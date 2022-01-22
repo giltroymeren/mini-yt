@@ -1,4 +1,4 @@
-import youtube from '../common/youtube'
+import youtube from '../api/youtube'
 import { IYouTubeResults } from '../common/types'
 import { useEffect, useState } from 'react'
 
